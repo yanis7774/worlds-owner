@@ -6,6 +6,11 @@ volumes:
   shared_keys:
 
 services:
+  redis:
+    image: 'bitnami/redis:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+
   caddy:
     image: livekit/caddyl4
     command: run --config /etc/caddy.yaml --adapter yaml
@@ -14,6 +19,8 @@ services:
     volumes:
       - ./caddy.yaml:/etc/caddy.yaml
       - ./caddy_data:/data
+    env_file:
+      - .env
 
   livekit:
     image: livekit/livekit-server:latest
@@ -22,6 +29,8 @@ services:
     network_mode: "host"
     volumes:
       - ./livekit.yaml:/etc/livekit.yaml
+    env_file:
+      - .env
 
   room-service:
     container_name: worlds-owner-room-service
