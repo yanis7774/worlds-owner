@@ -6,32 +6,42 @@ volumes:
   shared_keys:
 
 services:
-  redis:
-    image: 'bitnami/redis:latest'
-    ports:
-      - "80:81"
-      - "443:444"
+  # redis:
+  #   image: 'bitnami/redis:latest'
+  #   ports:
+  #     - "80:81"
+  #     - "443:444"
+  #   environment:
+  #     - ALLOW_EMPTY_PASSWORD=yes
+
+  # caddy:
+  #   image: livekit/caddyl4
+  #   command: run --config /etc/caddy.yaml --adapter yaml
+  #   restart: unless-stopped
+  #   network_mode: "host"
+  #   volumes:
+  #     - ./caddy.yaml:/etc/caddy.yaml
+  #     - ./caddy_data:/data
+  #   env_file:
+  #     - .env
+
+  # livekit:
+  #   image: livekit/livekit-server:latest
+  #   command: --config /etc/livekit.yaml
+  #   restart: unless-stopped
+  #   network_mode: "host"
+  #   volumes:
+  #     - ./livekit.yaml:/etc/livekit.yaml
+  #   env_file:
+  #     - .env
+
+  archipelago:
+    container_name: archipelago
+    image: quay.io/decentraland/archipelago-service-world:${WS_ROOM_SERVICE_DOCKER_TAG:-latest}
+    working_dir: /app
+    restart: always
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-
-  caddy:
-    image: livekit/caddyl4
-    command: run --config /etc/caddy.yaml --adapter yaml
-    restart: unless-stopped
-    network_mode: "host"
-    volumes:
-      - ./caddy.yaml:/etc/caddy.yaml
-      - ./caddy_data:/data
-    env_file:
-      - .env
-
-  livekit:
-    image: livekit/livekit-server:latest
-    command: --config /etc/livekit.yaml
-    restart: unless-stopped
-    network_mode: "host"
-    volumes:
-      - ./livekit.yaml:/etc/livekit.yaml
+      - MAX_USERS=100
     env_file:
       - .env
 
