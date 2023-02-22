@@ -2,3 +2,4 @@
 storage/
 local/nginx/conf.d/00-worlds.conf
 local/certbot/conf
+.DS_Store

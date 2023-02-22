@@ -37,7 +37,7 @@ services:
 
   archipelago:
     container_name: archipelago
-    image: quay.io/decentraland/archipelago-service-world:${WS_ROOM_SERVICE_DOCKER_TAG:-latest}
+    image: quay.io/decentraland/archipelago:${WS_ROOM_SERVICE_DOCKER_TAG:-latest}
     working_dir: /app
     restart: always
     environment:
