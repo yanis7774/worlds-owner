@@ -1,5 +1,5 @@
 volumes:
-	content_server_storage: {}
+  content_server_storage: {}
 	nginx_storage: {}
 	shared_keys:
 
