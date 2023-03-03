@@ -6,7 +6,7 @@ volumes:
 services:
   room-service:
     container_name: worlds-owner-room-service
-    image: quay.io/decentraland/ws-room-service:${WS_ROOM_SERVICE_DOCKER_TAG:-latest}
+    image: quay.io/decentraland/ws-room-service:${WS_ROOM_SERVICE_DOCKER_TAG}
     working_dir: /app
     restart: always
     environment:
@@ -16,7 +16,7 @@ services:
 
   content-server:
     container_name: worlds-owner-content-server
-    image: quay.io/decentraland/worlds-content-server:${WORLDS_CONTENT_SERVER_DOCKER_TAG:-latest}
+    image: quay.io/decentraland/worlds-content-server:${WORLDS_CONTENT_SERVER_DOCKER_TAG}
     working_dir: /app
     environment:
       - STORAGE_FOLDER=/app/storage
