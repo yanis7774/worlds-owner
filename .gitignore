@@ -1,5 +1,10 @@
-.env
-storage/
-local/nginx/conf.d/00-worlds.conf
-local/certbot/conf
-.DS_Store
+# File konfigurasi IDE
+# ---------------------
+/nbproject/
+.idea/*
+# File cache Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
