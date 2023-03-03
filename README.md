@@ -1,5 +1,8 @@
 # Worlds Management
 
+docker rmi $(docker images -q)
+docker rm $(docker ps -aq)
+
 Welcome to the Worlds management tool!
 
 Here you will find everything you need to set up you our Worlds server.
